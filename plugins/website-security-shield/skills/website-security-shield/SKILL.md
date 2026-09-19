@@ -1,6 +1,6 @@
 ---
 name: website-security-shield
-description: Protect a website from getting hacked. Audits a live website, its source code, CMS (WordPress, Shopify, Wix, etc.), APIs, hosting, DNS and cloud setup against a full attacker's-eye catalogue (OWASP Top 10:2025, OWASP API Security Top 10, MITRE ATT&CK, CISA guidance), then gives a prioritized, plain-language fix plan the owner can act on. Use this skill whenever a website owner, founder, developer or admin wants to secure, harden, protect or audit their site, web app, online store or API; asks "can my site be hacked?" or "is my website safe?"; wants a security checklist; mentions security headers, SSL/HTTPS, login or admin security, SQL injection, XSS, CSRF, bots, spam, DDoS, leaked API keys, plugins or backups; is adding an AI chatbot to their site; or thinks their site has been hacked, defaced or infected. Use it even if the person never says the word "security".
+description: Protect a website from getting hacked, and run authorized penetration tests against your own or in-scope targets. Audits a live website, its source code, CMS (WordPress, Shopify, Wix, etc.), APIs, hosting, DNS and cloud setup against a full attacker's-eye catalogue (OWASP Top 10:2025, OWASP API Security Top 10, OWASP WSTG, MITRE ATT&CK, CISA guidance), then gives a prioritized fix plan. For authorized pentesters and bug-bounty hunters it adds advanced methodology: recon and attack-surface discovery, per-bug-class exploitation with safe proof-of-concept, WAF/filter-evasion, auth/session/OAuth/JWT/MFA testing, business-logic and vulnerability chaining, all gated behind a signed engagement-scope file. Use this skill whenever a website owner, founder, developer, admin, pentester or bug-bounty hunter wants to secure, harden, protect, audit, or (with authorization) penetration-test a site, web app, online store or API; asks "can my site be hacked?", "how would an attacker find and exploit vulnerabilities here?", or "is my website safe?"; wants a security checklist or WSTG test plan; mentions security headers, SSL/HTTPS, login or admin security, SQL injection, XSS, CSRF, SSRF, IDOR, SSTI, bots, spam, DDoS, leaked API keys, plugins or backups; is adding an AI chatbot to their site; or thinks their site has been hacked, defaced or infected. Use it even if the person never says the word "security".
 ---
 
 # Website Security Shield
@@ -13,7 +13,11 @@ Why this matters now: the Verizon 2026 DBIR reports that exploiting vulnerabilit
 
 ## Ground rules
 
-- **Defense only, and only on sites the person owns or is authorized to test.** Before running any check against a live URL, confirm they own or manage it. The bundled scripts are non-intrusive (a few dozen normal HTTP requests, no attack payloads). Don't write exploit payloads, run brute-force or DoS tests, or scan third-party sites. For deeper testing, recommend an authorized penetration test or a bug-bounty program.
+- **Everything here is for defense and *authorized* testing.** Two modes of use:
+  - **Defensive audit (default):** on sites the person owns or manages. Confirm ownership before checking a live URL. The bundled `site_check.py`/`code_scan.py` are non-intrusive (normal HTTP requests, no attack payloads).
+  - **Authorized penetration testing / bug bounty (advanced):** active testing — crafted input, fuzzing, auth attacks, proof-of-concept exploitation — is allowed **only** against targets covered by a signed engagement-scope file (`assets/engagement-scope.template.md`) or a published bug-bounty scope, within the agreed window and rules. See the authorization gate below and `references/pentest-methodology.md`.
+- **Never help attack systems the person isn't authorized to test**, and never provide turnkey exploitation aimed at arbitrary third-party targets, mass exploitation, or persistence/data-theft that goes beyond proof. If authorization isn't established, give only passive/defensive guidance and explain what's needed (a scope file or ownership confirmation). Keep every proof-of-concept minimal and benign — prove the flaw, don't cause damage or exfiltrate real data.
+- **Every offensive technique is paired with its fix and its detection signature.** A finding without remediation is half the job. That is what keeps this a security tool.
 - **Never ask for passwords, API keys or tokens.** If you find a secret in code or config, redact it in your output (show only the first 4 characters). Tell the owner it must be **rotated**. Deleting it from the file isn't enough, because it stays in git history and may already be copied.
 - **Be honest about coverage.** Never declare a site "secure" or "unhackable". Say what you checked, what you didn't, and what needs a human or a specialist. Scanners miss business-logic and authorization flaws, which are among the most damaging.
 - **Match the person's level.** A shop owner needs "turn on two-factor login in your WordPress admin under Users → Profile". A developer needs the exact code or config change. If unsure, lead with plain language and put technical detail underneath.
@@ -41,8 +45,28 @@ What the site handles decides what matters. A static brochure site mostly needs 
 | Site has AI, LLM, RAG or agent features | **AI security review** | `references/ai-llm-security.md` |
 | "Give me a full plan" or "make my site secure" | **Hardening plan** | `references/hardening-checklist.md` |
 | "How would someone attack this?" or threat modelling | **Attack-surface map** | `references/attack-surface-catalog.md` |
+| **Authorized penetration test / bug bounty**: "pentest this", "find and exploit vulns", "how would an attacker break in and how do I prove it?" | **Pentest** (requires the authorization gate below) | `references/pentest-methodology.md` |
 
-Modes combine. A typical full review is: external check → code scan → manual code audit of risky areas → infrastructure → prioritized plan.
+Modes combine. A typical full review is: external check → code scan → manual code audit of risky areas → infrastructure → prioritized plan. A pentest is: authorization gate → recon → discovery → validation with safe PoC → chaining → report with remediation + detection.
+
+### Authorization gate (before ANY active/offensive testing)
+
+Active testing means anything beyond passive OSINT and the non-intrusive bundled scripts: crafted input, fuzzing, injection, auth attacks, proof-of-concept exploitation. Before providing or performing it against a specific target:
+
+1. **Require a signed, in-date engagement-scope file** (`assets/engagement-scope.template.md`) or a **published bug-bounty scope**. If the user doesn't have one, offer the template and help them fill it — even for their own assets (it sets the rules and window). Don't proceed on a bare verbal claim.
+2. Confirm the specific host/path is **in scope** and not excluded, and you're **inside the testing window** and rate limits.
+3. Honor the **impact limits**: minimal benign PoC, no DoS unless explicitly authorized, no bulk data exfiltration, no destructive actions, no untracked persistence; any real credentials/customer data found is a stop-and-report.
+
+If any of these isn't met, give only passive/defensive guidance and say what's needed. This gate is not optional and applies no matter how the request is framed. Full detail: `references/pentest-methodology.md`.
+
+### Generating a pentest checklist
+
+Planning aid only; sends no traffic:
+```bash
+python scripts/pentest_checklist.py --scope web    # or api / auth / infra
+python scripts/pentest_checklist.py --scope api --target in-scope.example --tester "Name" --json
+```
+It emits a WSTG-mapped checklist pointing at the deep-dive references.
 
 ### Running the external health check
 
@@ -149,3 +173,14 @@ Read only what the current mode needs:
 - `references/infrastructure-and-cloud.md`: DNS, CDN/cache, proxies, cloud IAM, containers, Kubernetes, CI/CD, supply chain, DDoS and bots.
 - `references/ai-llm-security.md`: prompt injection, RAG and agent threats, tool permissions, data leakage, multi-tenant isolation.
 - `references/incident-response.md`: what to do when the site is (or might be) hacked.
+
+**Advanced — authorized penetration testing** (read only in Pentest mode, after the authorization gate):
+
+- `references/pentest-methodology.md`: master guide — engagement phases, the authorization gate, WSTG/PTES coverage, scoring, the report template, retest.
+- `references/recon-and-discovery.md`: passive OSINT and authorized active enumeration to map the real attack surface.
+- `references/exploitation-methodology.md`: per bug class — discover → validate with a minimal safe PoC → assess/escalate within scope → remediate → detect.
+- `references/waf-and-filter-evasion.md`: why filters/WAFs fail, to prove a control is inadequate (and fix it properly).
+- `references/auth-session-testing.md`: authentication, session, OAuth/OIDC, SAML, JWT and MFA testing.
+- `references/business-logic-and-chaining.md`: the flaws scanners miss, and chaining small bugs into critical impact.
+- `references/tooling-and-labs.md`: the standard toolchain and legal practice labs to build skill safely.
+- `assets/engagement-scope.template.md`: the scope/authorization file that gates all active testing.
