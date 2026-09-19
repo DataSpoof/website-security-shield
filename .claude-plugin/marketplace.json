@@ -4,6 +4,10 @@
     "name": "DataSpoof",
     "url": "https://github.com/DataSpoof"
   },
+  "metadata": {
+    "description": "DataSpoof's Claude skills for defensive website security.",
+    "version": "1.0.0"
+  },
   "plugins": [
     {
       "name": "website-security-shield",
