@@ -1,0 +1,13 @@
+{
+  "name": "website-security-shield",
+  "description": "Protect any website from getting hacked: external health check, code security review, owner checklists, incident response, cloud and AI/LLM security.",
+  "version": "1.0.0",
+  "author": {
+    "name": "DataSpoof",
+    "url": "https://github.com/DataSpoof"
+  },
+  "homepage": "https://github.com/DataSpoof/website-security-shield",
+  "repository": "https://github.com/DataSpoof/website-security-shield",
+  "license": "MIT",
+  "keywords": ["security", "website", "owasp", "wordpress", "incident-response", "appsec", "llm-security"]
+}

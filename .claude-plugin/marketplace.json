@@ -1,0 +1,14 @@
+{
+  "name": "dataspoof-skills",
+  "owner": {
+    "name": "DataSpoof",
+    "url": "https://github.com/DataSpoof"
+  },
+  "plugins": [
+    {
+      "name": "website-security-shield",
+      "source": "./plugins/website-security-shield",
+      "description": "Protect any website from getting hacked: external health check, code security review, owner checklists, incident response, cloud and AI/LLM security, built on OWASP Top 10:2025, OWASP API Top 10 and MITRE ATT&CK."
+    }
+  ]
+}
