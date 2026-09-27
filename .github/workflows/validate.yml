@@ -31,5 +31,15 @@ jobs:
           cd plugins/website-security-shield/skills/website-security-shield
           python scripts/code_scan.py . --json > /dev/null
           python scripts/pentest_checklist.py --json > /dev/null
+          cp index.json /tmp/index.committed.json
           python scripts/build_index.py
-          git diff --exit-code index.json || (echo "::error::index.json out of date; commit the regenerated file"; exit 1)
+          python - <<'PY'
+          import json
+          a = json.load(open("/tmp/index.committed.json"))
+          b = json.load(open("index.json"))
+          a.pop("generated_at", None); b.pop("generated_at", None)
+          if a != b:
+              print("::error::index.json out of date (ignoring generated_at); run scripts/build_index.py and commit")
+              raise SystemExit(1)
+          print("index.json in sync")
+          PY
