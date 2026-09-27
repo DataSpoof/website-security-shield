@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: "Website Security Shield: a Claude skill for defensive website security and authorized penetration testing"
+message: "If you use this skill, please cite it."
+type: software
+authors:
+  - name: DataSpoof
+    website: "https://github.com/DataSpoof"
+repository-code: "https://github.com/DataSpoof/website-security-shield"
+license: MIT
+version: 1.2.0
+keywords:
+  - cybersecurity
+  - web-security
+  - penetration-testing
+  - bug-bounty
+  - owasp
+  - mitre-attack
+  - incident-response

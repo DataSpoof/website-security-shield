@@ -1,0 +1,17 @@
+name: Improvement / new coverage
+description: Suggest a new technique, defense, or framework mapping
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes: {label: What should the skill cover or improve?}
+    validations: {required: true}
+  - type: input
+    id: mapping
+    attributes: {label: Framework mapping (if any), placeholder: "OWASP A0X / MITRE T1xxx / CWE-xx"}
+  - type: checkboxes
+    id: policy
+    attributes:
+      label: Confirmation
+      options:
+        - {label: "This is defensive or authorized-testing content, and any offensive technique includes remediation + detection (see SCOPE.md).", required: true}

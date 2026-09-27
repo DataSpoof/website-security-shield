@@ -1,0 +1,203 @@
+{
+  "name": "website-security-shield",
+  "version": "1.2.0",
+  "domain": "cybersecurity",
+  "subdomain": "web-application-security",
+  "author": "DataSpoof",
+  "license": "MIT",
+  "tags": [
+    "web-security",
+    "penetration-testing",
+    "bug-bounty",
+    "owasp",
+    "appsec",
+    "incident-response",
+    "cloud-security",
+    "api-security",
+    "llm-security",
+    "defensive-security"
+  ],
+  "description": "Protect a website from getting hacked, and run authorized penetration tests against your own or in- scope targets. Audits a live website, its source code, CMS (WordPress, Shopify, Wix, etc.), APIs, hosting, DNS and cloud setup against a full attacker's-eye catalogue (OWASP Top 10:2025, OWASP API Security Top 10, OWASP WSTG, MITRE ATT&CK, CISA guidance), then gives a prioritized fix plan. For authorized pentesters and bug-bounty hunters it adds advanced methodology: recon and attack-surface discovery, per-bug-class exploitation with safe proof-of-concept, WAF/filter-evasion, auth/session/OAuth/JWT/MFA testing, business-logic and vulnerability chaining, all gated behind a signed engagement-scope file. Use this skill whenever a website owner, founder, developer, admin, pentester or bug-bounty hunter wants to secure, harden, protect, audit, or (with authorization) penetration-test a site, web app, online store or API; asks \"can my site be hacked?\", \"how would an attacker find and exploit vulnerabilities here?\", or \"is my website safe?\"; wants a security checklist or WSTG test plan; mentions security headers, SSL/HTTPS, login or admin security, SQL injection, XSS, CSRF, SSRF, IDOR, SSTI, bots, spam, DDoS, leaked API keys, plugins or backups; is adding an AI chatbot to their site; or thinks their site has been hacked, defaced or infected. Use it even if the person never says the word \"security\".",
+  "frameworks": {
+    "owasp_top_10_2025": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10"
+    ],
+    "owasp_api_security_top_10_2023": [
+      "API1",
+      "API2",
+      "API3",
+      "API4",
+      "API5",
+      "API6",
+      "API7",
+      "API8",
+      "API9",
+      "API10"
+    ],
+    "owasp_wstg": [
+      "INFO",
+      "CONF",
+      "IDNT",
+      "ATHN",
+      "ATHZ",
+      "SESS",
+      "INPV",
+      "ERRH",
+      "CRYP",
+      "BUSL",
+      "CLNT",
+      "APIT"
+    ],
+    "mitre_attack": [
+      "T1595",
+      "T1592",
+      "T1589",
+      "T1190",
+      "T1078",
+      "T1110",
+      "T1556",
+      "T1539",
+      "T1552",
+      "T1505.003",
+      "T1195",
+      "T1136",
+      "T1552.005",
+      "T1526",
+      "T1567",
+      "T1499"
+    ],
+    "mitre_atlas": [
+      "AML.T0051",
+      "AML.T0057"
+    ],
+    "cwe": [
+      "CWE-89",
+      "CWE-79",
+      "CWE-78",
+      "CWE-1336",
+      "CWE-918",
+      "CWE-639",
+      "CWE-285",
+      "CWE-611",
+      "CWE-502",
+      "CWE-22",
+      "CWE-434",
+      "CWE-444",
+      "CWE-942",
+      "CWE-352",
+      "CWE-798",
+      "CWE-522",
+      "CWE-20",
+      "CWE-1321",
+      "CWE-287",
+      "CWE-384"
+    ],
+    "nist_csf_2_0": [
+      "GV.OC",
+      "ID.AM",
+      "ID.RA",
+      "PR.AA",
+      "PR.PS",
+      "PR.DS",
+      "DE.CM",
+      "DE.AE",
+      "RS.MA",
+      "RS.AN",
+      "RC.RP"
+    ],
+    "standards": [
+      "PTES",
+      "NIST SP 800-115",
+      "CISA KEV",
+      "Verizon DBIR 2026",
+      "OWASP ASVS"
+    ]
+  },
+  "modules": {
+    "references": [
+      {
+        "file": "references/ai-llm-security.md",
+        "title": "Use this when the site has a chatbot, AI assistant, \"chat with your documents\" (RAG), AI search, or an agent that can take actions (send email, query databases, call APIs)."
+      },
+      {
+        "file": "references/attack-surface-catalog.md",
+        "title": "Condensed from research using OWASP Top 10:2025, OWASP API Security Top 10 (2023), OWASP Automated Threats, MITRE ATT&CK (T1190 Exploit Public-Facing Application), CISA advisories, the Verizon 2026 DBIR, and PortSwigger Web Security Academy."
+      },
+      {
+        "file": "references/auth-session-testing.md",
+        "title": "Advanced testing of identity and session controls \u2014 WSTG ATHN/SESS/IDNT. **Gate:** in-scope, in-window, authorized targets only (`pentest-methodology.md`); test with **your own test accounts**, never real users' credentials. Any real credentials you discover are a stop-and-report, not a pivot."
+      },
+      {
+        "file": "references/business-logic-and-chaining.md",
+        "title": "The flaws automated scanners never find, and the art of turning small issues into critical impact. This is where advanced testers earn their keep. **Gate:** in-scope, in-window, authorized (`pentest-methodology.md`); use your own test accounts and benign proofs."
+      },
+      {
+        "file": "references/code-audit-guide.md",
+        "title": "How to review a website's source code for the bug classes attackers exploit. Run `scripts/code_scan.py` first for quick leads, then use this guide for the manual review. The scan can't find the most damaging bugs, which are authorization and business logic, so the manual part matters most."
+      },
+      {
+        "file": "references/exploitation-methodology.md",
+        "title": "For each vulnerability class: **how a tester discovers it, how to confirm it with a minimal safe proof-of-concept, how to assess impact (and escalate within scope), how to fix it, and how to detect it.** This is the depth that separates an advanced authorized test from a scanner run."
+      },
+      {
+        "file": "references/hardening-checklist.md",
+        "title": "Work top to bottom. Tick only items that apply to this site. Mark the rest \"N/A\" and give a reason. Every item has a concrete target value so it can be verified."
+      },
+      {
+        "file": "references/incident-response.md",
+        "title": "Stay calm and methodical. Speed matters, but acting in the wrong order (e.g. restoring a backup before closing the hole) leads to reinfection. Guide the owner through these phases. For businesses handling personal or payment data, recommend a professional incident-response firm or the host's security team early."
+      },
+      {
+        "file": "references/infrastructure-and-cloud.md",
+        "title": "The web application is only one part of the attack surface. A web bug can escalate like this: container \u2192 service account \u2192 Kubernetes API \u2192 cloud IAM \u2192 every other workload and database. This file covers the layers around the application."
+      },
+      {
+        "file": "references/owner-quick-wins.md",
+        "title": "For website owners who aren't developers: small businesses, bloggers, online shops, and sites on WordPress, Shopify, Wix, Squarespace, Webflow, Joomla or Drupal. Most real-world hacks of small sites come from a handful of causes: **stolen or weak passwords, outdated software and plugins, and no backups.** Fixing those stops most attacks."
+      },
+      {
+        "file": "references/pentest-methodology.md",
+        "title": "This is the master guide for **authorized** web/API penetration testing and bug-bounty work: engagements against systems the tester owns, has signed authorization for (see `../assets/engagement-scope.template.md`), or that are in a published bounty program's scope. It maps to the **OWASP Web Security Testing Guide (WSTG) v4.2** and **PTES**."
+      },
+      {
+        "file": "references/recon-and-discovery.md",
+        "title": "Mapping the real attack surface for an authorized engagement. **Passive** techniques (no packets to the target's own infrastructure beyond normal browsing) need no active-testing gate. **Active** enumeration (directed scanning, fuzzing, brute-forcing content) requires the target to be in scope and in-window \u2014 see `pentest-methodology.md`."
+      },
+      {
+        "file": "references/tooling-and-labs.md",
+        "title": "The standard professional toolchain, and where to build and practice these skills **legally**. Use tools only against authorized targets (`pentest-methodology.md`)."
+      },
+      {
+        "file": "references/waf-and-filter-evasion.md",
+        "title": "Why blocklists and WAFs get bypassed, so an authorized tester can **prove a control is inadequate** and a defender can fix it properly. The lesson for the report is always the same: **a WAF is a speed bump, not a fix.** The real remediation is parameterized queries, output encoding, allow-list validation and server-side authorization \u2014 the WAF buys time, nothing more."
+      }
+    ],
+    "scripts": [
+      {
+        "file": "scripts/code_scan.py",
+        "summary": "code_scan.py - fast heuristic scan of a website's source code for leaked secrets and"
+      },
+      {
+        "file": "scripts/pentest_checklist.py",
+        "summary": "pentest_checklist.py - generate a working checklist for an AUTHORIZED web/API"
+      },
+      {
+        "file": "scripts/site_check.py",
+        "summary": "site_check.py - non-intrusive external security health check for a website you own."
+      }
+    ],
+    "assets": [
+      "assets/engagement-scope.template.md"
+    ]
+  },
+  "generated_at": "2026-09-27T13:34:59Z"
+}

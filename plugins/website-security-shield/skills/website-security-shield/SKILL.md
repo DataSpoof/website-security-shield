@@ -1,6 +1,65 @@
 ---
 name: website-security-shield
-description: Protect a website from getting hacked, and run authorized penetration tests against your own or in-scope targets. Audits a live website, its source code, CMS (WordPress, Shopify, Wix, etc.), APIs, hosting, DNS and cloud setup against a full attacker's-eye catalogue (OWASP Top 10:2025, OWASP API Security Top 10, OWASP WSTG, MITRE ATT&CK, CISA guidance), then gives a prioritized fix plan. For authorized pentesters and bug-bounty hunters it adds advanced methodology: recon and attack-surface discovery, per-bug-class exploitation with safe proof-of-concept, WAF/filter-evasion, auth/session/OAuth/JWT/MFA testing, business-logic and vulnerability chaining, all gated behind a signed engagement-scope file. Use this skill whenever a website owner, founder, developer, admin, pentester or bug-bounty hunter wants to secure, harden, protect, audit, or (with authorization) penetration-test a site, web app, online store or API; asks "can my site be hacked?", "how would an attacker find and exploit vulnerabilities here?", or "is my website safe?"; wants a security checklist or WSTG test plan; mentions security headers, SSL/HTTPS, login or admin security, SQL injection, XSS, CSRF, SSRF, IDOR, SSTI, bots, spam, DDoS, leaked API keys, plugins or backups; is adding an AI chatbot to their site; or thinks their site has been hacked, defaced or infected. Use it even if the person never says the word "security".
+description: >-
+  Protect a website from getting hacked, and run authorized penetration tests against your own or in-
+  scope targets. Audits a live website, its source code, CMS (WordPress, Shopify, Wix, etc.), APIs,
+  hosting, DNS and cloud setup against a full attacker's-eye catalogue (OWASP Top 10:2025, OWASP API
+  Security Top 10, OWASP WSTG, MITRE ATT&CK, CISA guidance), then gives a prioritized fix plan. For
+  authorized pentesters and bug-bounty hunters it adds advanced methodology: recon and attack-surface
+  discovery, per-bug-class exploitation with safe proof-of-concept, WAF/filter-evasion,
+  auth/session/OAuth/JWT/MFA testing, business-logic and vulnerability chaining, all gated behind a
+  signed engagement-scope file. Use this skill whenever a website owner, founder, developer, admin,
+  pentester or bug-bounty hunter wants to secure, harden, protect, audit, or (with authorization)
+  penetration-test a site, web app, online store or API; asks "can my site be hacked?", "how would an
+  attacker find and exploit vulnerabilities here?", or "is my website safe?"; wants a security
+  checklist or WSTG test plan; mentions security headers, SSL/HTTPS, login or admin security, SQL
+  injection, XSS, CSRF, SSRF, IDOR, SSTI, bots, spam, DDoS, leaked API keys, plugins or backups; is
+  adding an AI chatbot to their site; or thinks their site has been hacked, defaced or infected. Use
+  it even if the person never says the word "security".
+domain: cybersecurity
+subdomain: web-application-security
+tags:
+  - web-security
+  - penetration-testing
+  - bug-bounty
+  - owasp
+  - appsec
+  - incident-response
+  - cloud-security
+  - api-security
+  - llm-security
+  - defensive-security
+version: 1.2.0
+author: DataSpoof
+license: MIT
+authorization: >-
+  defensive audit is open; active/offensive testing requires a signed engagement-scope file or a
+  published bug-bounty scope (see assets/engagement-scope.template.md)
+frameworks:
+  owasp_top_10_2025: [A01, A02, A03, A04, A05, A06, A07, A08, A09, A10]
+  owasp_api_security_top_10_2023: [API1, API2, API3, API4, API5, API6, API7, API8, API9, API10]
+  owasp_wstg: [INFO, CONF, IDNT, ATHN, ATHZ, SESS, INPV, ERRH, CRYP, BUSL, CLNT, APIT]
+  mitre_attack:
+    - T1595   # Active Scanning (recon)
+    - T1592   # Gather Victim Host Information
+    - T1589   # Gather Victim Identity Information
+    - T1190   # Exploit Public-Facing Application
+    - T1078   # Valid Accounts (credential stuffing / ATO)
+    - T1110   # Brute Force
+    - T1556   # Modify Authentication Process (auth bypass)
+    - T1539   # Steal Web Session Cookie
+    - T1552   # Unsecured Credentials (secrets in code/.env)
+    - T1505.003 # Server Software Component: Web Shell
+    - T1195   # Supply Chain Compromise
+    - T1136   # Create Account (backdoor admin persistence)
+    - T1552.005 # Cloud Instance Metadata API (SSRF to metadata)
+    - T1526   # Cloud Service Discovery
+    - T1567   # Exfiltration Over Web Service
+    - T1499   # Endpoint Denial of Service
+  mitre_atlas: [AML.T0051, AML.T0057]   # LLM Prompt Injection; LLM Data Leakage
+  cwe: [CWE-89, CWE-79, CWE-78, CWE-1336, CWE-918, CWE-639, CWE-285, CWE-611, CWE-502, CWE-22, CWE-434, CWE-444, CWE-942, CWE-352, CWE-798, CWE-522, CWE-20, CWE-1321, CWE-287, CWE-384]
+  nist_csf_2_0: [GV.OC, ID.AM, ID.RA, PR.AA, PR.PS, PR.DS, DE.CM, DE.AE, RS.MA, RS.AN, RC.RP]
+  standards: [PTES, "NIST SP 800-115", "CISA KEV", "Verizon DBIR 2026", "OWASP ASVS"]
 ---
 
 # Website Security Shield

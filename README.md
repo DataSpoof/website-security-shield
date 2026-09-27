@@ -1,8 +1,10 @@
 # Website Security Shield: a Claude skill
 
+![license](https://img.shields.io/badge/license-MIT-blue) ![version](https://img.shields.io/badge/version-1.2.0-green) ![frameworks](https://img.shields.io/badge/mapped%20to-OWASP%20%7C%20MITRE%20ATT%26CK%20%7C%20NIST%20CSF%20%7C%20CWE-orange) ![validate](https://github.com/DataSpoof/website-security-shield/actions/workflows/validate.yml/badge.svg)
+
 **Protect any website from getting hacked — and run authorized penetration tests.** This skill makes Claude a website-security assistant for two audiences: owners who want to defend their site in plain language, and authorized pentesters / bug-bounty hunters who want advanced offensive methodology with the fix and detection for every technique.
 
-It's built on OWASP Top 10:2025, the OWASP API Security Top 10, the OWASP Web Security Testing Guide (WSTG), OWASP Automated Threats, MITRE ATT&CK (T1190), CISA guidance, PTES, and the Verizon 2026 DBIR.
+It's built on OWASP Top 10:2025, the OWASP API Security Top 10, the OWASP Web Security Testing Guide (WSTG), OWASP Automated Threats, MITRE ATT&CK (T1190), CISA guidance, PTES, and the Verizon 2026 DBIR — and every capability is **mapped to industry frameworks** (see below).
 
 > **Authorized use only.** The offensive material is gated behind a signed engagement-scope file (or a published bug-bounty scope). The skill won't help attack systems you don't own or aren't authorized to test, and every exploitation technique is paired with its remediation and detection signature. Testing systems without authorization is illegal (CFAA, UK CMA, India IT Act and equivalents) regardless of intent.
 
@@ -94,12 +96,34 @@ skills/website-security-shield/
     └── pentest_checklist.py          # WSTG-mapped checklist generator (sends no traffic)
 ```
 
+## Framework mappings
+
+Every capability is mapped to the standards security teams already use, so a finding ties to a recognised technique/control. Machine-readable in [`index.json`](plugins/website-security-shield/skills/website-security-shield/index.json) and the `SKILL.md` frontmatter; human-readable in [`mappings/`](plugins/website-security-shield/skills/website-security-shield/mappings/).
+
+| Framework | Coverage |
+|---|---|
+| **OWASP Top 10:2025** | A01–A10 (all) — [`mappings/owasp.md`](plugins/website-security-shield/skills/website-security-shield/mappings/owasp.md) |
+| **OWASP API Security Top 10 (2023)** | API1–API10 (all) |
+| **OWASP WSTG v4.2** | INFO · CONF · IDNT · ATHN · ATHZ · SESS · INPV · ERRH · CRYP · BUSL · CLNT · APIT |
+| **MITRE ATT&CK** | 16 techniques anchored on T1190 — [`mappings/mitre-attack.md`](plugins/website-security-shield/skills/website-security-shield/mappings/mitre-attack.md) |
+| **MITRE ATLAS** | LLM prompt injection & data leakage (AML.T0051, AML.T0057) |
+| **NIST CSF 2.0** | Govern · Identify · Protect · Detect · Respond · Recover — [`mappings/nist-csf.md`](plugins/website-security-shield/skills/website-security-shield/mappings/nist-csf.md) |
+| **CWE** | 20 root-cause weakness classes |
+
+The skill folder is self-describing: [`index.json`](plugins/website-security-shield/skills/website-security-shield/index.json) catalogs its reference modules, scripts and mappings, and CI ([`validate.yml`](.github/workflows/validate.yml)) keeps frontmatter, mappings and index in sync on every push.
+
 ## Responsible use
 
 - **Defensive use only.** Test only websites you own or have written permission to test. `site_check.py` refuses to run without `--authorized`.
 - The scripts send ordinary requests only: no exploit payloads, no brute force, no load testing.
 - The skill never asks for your passwords and redacts any secrets it finds.
 - No tool can prove a site is "unhackable". For high-value sites, also get an authorized penetration test.
+
+## Project docs
+
+- [SCOPE.md](SCOPE.md) — authorized-use policy (what the skill will and won't help with)
+- [SECURITY.md](SECURITY.md) — how to report a vulnerability in this project
+- [CONTRIBUTING.md](CONTRIBUTING.md) · [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) · [CITATION.cff](CITATION.cff)
 
 ## License
 
