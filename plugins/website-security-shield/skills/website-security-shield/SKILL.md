@@ -29,7 +29,7 @@ tags:
   - api-security
   - llm-security
   - defensive-security
-version: 1.2.0
+version: 1.3.0
 author: DataSpoof
 license: MIT
 authorization: >-
@@ -59,6 +59,17 @@ frameworks:
   mitre_atlas: [AML.T0051, AML.T0057]   # LLM Prompt Injection; LLM Data Leakage
   cwe: [CWE-89, CWE-79, CWE-78, CWE-1336, CWE-918, CWE-639, CWE-285, CWE-611, CWE-502, CWE-22, CWE-434, CWE-444, CWE-942, CWE-352, CWE-798, CWE-522, CWE-20, CWE-1321, CWE-287, CWE-384]
   nist_csf_2_0: [GV.OC, ID.AM, ID.RA, PR.AA, PR.PS, PR.DS, DE.CM, DE.AE, RS.MA, RS.AN, RC.RP]
+  d3fend:
+    - "Multi-factor Authentication"
+    - "Strong Password Policy"
+    - "Inbound Traffic Filtering"
+    - "Outbound Traffic Filtering"
+    - "Application Configuration Hardening"
+    - "Message Authentication"
+    - "Session Termination"
+    - "User Behavior Analysis"
+    - "Input Validation"
+  nist_ai_rmf: [GOVERN, MAP, MEASURE, MANAGE]
   standards: [PTES, "NIST SP 800-115", "CISA KEV", "Verizon DBIR 2026", "OWASP ASVS"]
 ---
 

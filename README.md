@@ -105,12 +105,16 @@ Every capability is mapped to the standards security teams already use, so a fin
 | **OWASP Top 10:2025** | A01–A10 (all) — [`mappings/owasp.md`](plugins/website-security-shield/skills/website-security-shield/mappings/owasp.md) |
 | **OWASP API Security Top 10 (2023)** | API1–API10 (all) |
 | **OWASP WSTG v4.2** | INFO · CONF · IDNT · ATHN · ATHZ · SESS · INPV · ERRH · CRYP · BUSL · CLNT · APIT |
-| **MITRE ATT&CK** | 16 techniques anchored on T1190 — [`mappings/mitre-attack.md`](plugins/website-security-shield/skills/website-security-shield/mappings/mitre-attack.md) |
+| **MITRE ATT&CK** | 16 techniques anchored on T1190 — [`mappings/mitre-attack.md`](plugins/website-security-shield/skills/website-security-shield/mappings/mitre-attack.md) · visualize with the [ATT&CK Navigator layer](plugins/website-security-shield/skills/website-security-shield/mappings/attack-navigator-layer.json) |
 | **MITRE ATLAS** | LLM prompt injection & data leakage (AML.T0051, AML.T0057) |
+| **MITRE D3FEND** | Defensive countermeasures (Harden/Isolate/Detect/Restore) — [`mappings/d3fend.md`](plugins/website-security-shield/skills/website-security-shield/mappings/d3fend.md) |
 | **NIST CSF 2.0** | Govern · Identify · Protect · Detect · Respond · Recover — [`mappings/nist-csf.md`](plugins/website-security-shield/skills/website-security-shield/mappings/nist-csf.md) |
+| **NIST AI RMF 1.0** | Govern · Map · Measure · Manage (AI features) — [`mappings/nist-ai-rmf.md`](plugins/website-security-shield/skills/website-security-shield/mappings/nist-ai-rmf.md) |
 | **CWE** | 20 root-cause weakness classes |
 
-The skill folder is self-describing: [`index.json`](plugins/website-security-shield/skills/website-security-shield/index.json) catalogs its reference modules, scripts and mappings, and CI ([`validate.yml`](.github/workflows/validate.yml)) keeps frontmatter, mappings and index in sync on every push.
+The skill folder is self-describing: [`index.json`](plugins/website-security-shield/skills/website-security-shield/index.json) catalogs its reference modules, scripts and mappings, and CI ([`validate.yml`](.github/workflows/validate.yml)) keeps frontmatter, mappings and index in sync on every push. See [`ATTACK_COVERAGE.md`](ATTACK_COVERAGE.md) for an honest coverage summary (and what's deliberately out of scope).
+
+**Works beyond Claude:** the skill is portable to other AI agents (GitHub Copilot, Cursor, Codex CLI, Gemini CLI) via [`AGENTS.md`](AGENTS.md) and [`.github/copilot-instructions.md`](.github/copilot-instructions.md).
 
 ## Responsible use
 

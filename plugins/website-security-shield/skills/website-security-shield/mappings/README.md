@@ -9,7 +9,11 @@ This skill maps its coverage to the industry frameworks pentesters, defenders an
 | OWASP WSTG v4.2 | Test-case coverage for authorized pentests | `owasp.md` |
 | MITRE ATT&CK (Enterprise) | Adversary techniques the skill helps find/detect | `mitre-attack.md` |
 | MITRE ATLAS | AI/LLM adversary techniques | `mitre-attack.md` |
+| MITRE D3FEND | Defensive countermeasures (the fix/detect side) | `d3fend.md` |
 | NIST CSF 2.0 | Governance/defense control functions | `nist-csf.md` |
+| NIST AI RMF 1.0 | AI/LLM risk functions (Govern/Map/Measure/Manage) | `nist-ai-rmf.md` |
 | CWE | Root-cause weakness classes for findings | `owasp.md` |
+
+**Visualize it:** `attack-navigator-layer.json` loads directly in the [MITRE ATT&CK Navigator](https://mitre-attack.github.io/attack-navigator/) (Open Existing Layer → upload) to show this skill's technique coverage. Regenerate it with `python scripts/build_navigator_layer.py`.
 
 Mappings are **coverage indicators**, not certification. They say "this skill has material that helps with technique/category X," and are derived from this skill's own content (not copied from any other project). Validate applicability per engagement.

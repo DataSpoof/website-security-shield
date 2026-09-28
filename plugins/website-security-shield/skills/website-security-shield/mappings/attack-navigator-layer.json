@@ -1,0 +1,147 @@
+{
+  "name": "Website Security Shield coverage",
+  "versions": {
+    "attack": "15",
+    "navigator": "4.9.0",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Techniques this skill helps find (authorized) and defend/detect. Anchored on T1190.",
+  "sorting": 3,
+  "hideDisabled": false,
+  "techniques": [
+    {
+      "techniqueID": "T1595",
+      "score": 100,
+      "color": "",
+      "comment": "Active scanning / recon (recon-and-discovery.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1592",
+      "score": 100,
+      "color": "",
+      "comment": "Host fingerprinting (recon-and-discovery.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1589",
+      "score": 100,
+      "color": "",
+      "comment": "Identity OSINT (recon-and-discovery.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1190",
+      "score": 100,
+      "color": "",
+      "comment": "Exploit public-facing app: all injection/RCE classes (exploitation-methodology.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1078",
+      "score": 100,
+      "color": "",
+      "comment": "Valid accounts / credential stuffing / ATO (auth-session-testing.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1110",
+      "score": 100,
+      "color": "",
+      "comment": "Brute force / lockout testing (auth-session-testing.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1556",
+      "score": 100,
+      "color": "",
+      "comment": "Auth bypass (exploitation + auth-session-testing.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1539",
+      "score": 100,
+      "color": "",
+      "comment": "Steal web session cookie (auth-session-testing.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1552",
+      "score": 100,
+      "color": "",
+      "comment": "Unsecured credentials / secrets in code (code_scan.py)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1505.003",
+      "score": 100,
+      "color": "",
+      "comment": "Web shell via file upload (exploitation-methodology.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1195",
+      "score": 100,
+      "color": "",
+      "comment": "Supply chain / dependencies (code-audit-guide.md, infrastructure-and-cloud.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1136",
+      "score": 100,
+      "color": "",
+      "comment": "Backdoor admin account persistence (incident-response.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1552.005",
+      "score": 100,
+      "color": "",
+      "comment": "Cloud metadata via SSRF (exploitation-methodology.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1526",
+      "score": 100,
+      "color": "",
+      "comment": "Cloud service discovery (infrastructure-and-cloud.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1567",
+      "score": 100,
+      "color": "",
+      "comment": "Exfiltration over web service (attack-surface-catalog.md)",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1499",
+      "score": 100,
+      "color": "",
+      "comment": "Endpoint DoS (attack-surface-catalog.md, infrastructure-and-cloud.md)",
+      "enabled": true
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ffffff",
+      "#66b1ff",
+      "#0b5cad"
+    ],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    {
+      "label": "Covered by this skill",
+      "color": "#0b5cad"
+    }
+  ],
+  "metadata": [
+    {
+      "name": "source",
+      "value": "SKILL.md frontmatter frameworks.mitre_attack"
+    }
+  ]
+}
