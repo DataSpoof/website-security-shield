@@ -1,6 +1,6 @@
 # Website Security Shield: a Claude skill
 
-![license](https://img.shields.io/badge/license-MIT-blue) ![version](https://img.shields.io/badge/version-1.2.0-green) ![frameworks](https://img.shields.io/badge/mapped%20to-OWASP%20%7C%20MITRE%20ATT%26CK%20%7C%20NIST%20CSF%20%7C%20CWE-orange) ![validate](https://github.com/DataSpoof/website-security-shield/actions/workflows/validate.yml/badge.svg)
+![license](https://img.shields.io/badge/license-MIT-blue) ![version](https://img.shields.io/badge/version-1.3.0-green) ![frameworks](https://img.shields.io/badge/mapped%20to-OWASP%20%7C%20ATT%26CK%20%7C%20ATLAS%20%7C%20D3FEND%20%7C%20NIST%20CSF%20%7C%20AI%20RMF%20%7C%20CWE-orange) ![validate](https://github.com/DataSpoof/website-security-shield/actions/workflows/validate.yml/badge.svg)
 
 **Protect any website from getting hacked — and run authorized penetration tests.** This skill makes Claude a website-security assistant for two audiences: owners who want to defend their site in plain language, and authorized pentesters / bug-bounty hunters who want advanced offensive methodology with the fix and detection for every technique.
 
